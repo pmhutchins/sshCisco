@@ -1,7 +1,7 @@
 import os
 from netmiko import ConnectHandler
 from getpass import getpass
-from netmiko.exceptions import AuthenticationException, SSHException, ReadTimeout
+from netmiko.exceptions import AuthenticationException, SSHException, Timeouterror
 
 USERNAME = input("Please enter your SSH username: ")
 PASS = getpass("Please enter your SSH password: ")
@@ -23,5 +23,5 @@ except (AuthenticationException):
     print("An authentication error occured while connection to: " + device['ip'])
 except (SSHException):
     print("An error occured while connecting to device " + device['ip'] + " via ssh. Is SSH enabled?")
-except (ReadTimeout):
+except (Timeouterror):
     print("The device " + device['ip'] + " timed out when attempting to connect.")
